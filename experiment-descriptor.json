@@ -21,9 +21,9 @@
       "content-type": "text"
     },
     {
-      "target": "posttest.html",
-      "source": "posttest.json",
-      "label": "Posttest",
+      "target": "pretest.html",
+      "source": "pretest.json",
+      "label": "Pretest",
       "unit-type": "task",
       "content-type": "assesment"
     },
