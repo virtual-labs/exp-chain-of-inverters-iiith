@@ -21,13 +21,12 @@
       "content-type": "text"
     },
     {
-      "target": "pretest.html",
-      "source": "pretest.json",
-      "label": "Pretest",
+      "target": "posttest.html",
+      "source": "posttest.json",
+      "label": "Posttest",
       "unit-type": "task",
       "content-type": "assesment"
     },
-
     {
       "target": "simulation.html",
       "source": "simulation/index.html",
