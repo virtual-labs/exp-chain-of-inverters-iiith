@@ -23,4 +23,8 @@ In this experiment, it will be learnt how a delay can be reduced by changing the
 
 <img src="images/dintro.jpg">
 
-In theory we will be proceeding further with reducing the shown delay, i.e., reducing the time between giving an input and getting the output.
+In theory we will be proceeding further with reducing the shown delay, i.e., reducing the time between giving an input and getting the output.  
+
+Objective:
+
+- To study the effect of gate sizing in chain of inverters on its output delay.
