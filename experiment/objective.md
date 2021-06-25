@@ -1,1 +1,0 @@
-- To study the effect of gate sizing in chain of inverters on its output delay.
