@@ -1,18 +1,91 @@
 [
-{"question":"This is a Sample Question 1?",
+{"question":"1. Can we reduce delay to zero? ",
 "answers":{
-            "a":"answer1",
-            "b":"answer2",
-            "c":"answer3",
-            "d":"answer4"
+            "a":"Yes",
+            "b":"No",
+            "c":"Yes in most of the cases",
+            "d":"Yes in very few cases"
+          },
+"correctAnswer":"b["},
+{"question":"2. What you mean by delay?",
+"answers":{
+            "a":"Time to correctly access the input",
+            "b":"Time to correctly access the output",
+            "c":"Average rise time and fall time",
+            "d":"Time taken for the output to come after the input has been captured"
+          },
+"correctAnswer":"d"},
+            
+{"question":"3. The optimum size of each inverter is ________ of its neighbours",
+"answers":{
+            "a":"Geometric mean",
+            "b":"Arithmetic mean",
+            "c":"Geometric or arithmetic mean",
+            "d":"None of the above"
           },
 "correctAnswer":"a"},
-{"question":"This is a Sample Question 2?",
+            
+{"question":"4. What does Cg1 corresponds to in the following formula? <img src='images/t54.jpg'>",
 "answers":{
-            "a":"answer1",
-            "b":"answer2",
-            "c":"answer3",
-            "d":"answer4"
+            "a":"Input gate capacitance of the last inverter driving capacitative load",
+            "b":"Sum of input capacitances of all the inverter in series",
+            "c":"Input gate capacitance of first inverter in series",
+            "d":"None of the above"
           },
-"correctAnswer":"c"} 
+"correctAnswer":"c"},
+            
+{"question":"5. If the gate size is increased by n then what will be the effect on its resistance?",
+"answers":{
+            "a":"Increases by n",
+            "b":"Decreases by n",
+            "c":"Decreases by n2",
+            "d":"Remains constant"
+          },
+"correctAnswer":"b"},
+            
+{"question":"6. If the gate size is increased by n then what will be the effect on its capacitance?",
+"answers":{
+            "a":"Increases by n2",
+            "b":"Increases by n",
+            "c":"Decreases by n",
+            "d":"Remains constant"
+          },
+"correctAnswer":"b"},
+            
+{"question":"7. Choose the correct statement from the following.",
+"answers":{
+            "a":"All the inveters in series are kept to be of same size for minimum delay",
+            "b":"The inverter size does not matter as long as the inverter driving the load has very big size",
+            "c":"The inverter size does not matter as long as the inverter driving the load has very small size",
+            "d":"The size of the inverter driving the load is maximum of all and is some multiple of size of the previous inverters"
+          },
+"correctAnswer":"d"},
+            
+{"question":"8. For minimm delay, what is the no of inverters in the chain connected in series?",
+"answers":{
+            "a":"4",
+            "b":"5",
+            "c":"6",
+            "d":"Need to calculate according to the situation given, it is not fixed."
+          },
+"correctAnswer":"d"},            
+            
+{"question":"9. Let a be the stage ratio of an inverter chain. What is its optimum value to drive a load capacitor with minimum delay?",
+"answers":{
+            "a":"4",
+            "b":"1/e",
+            "c":"2",
+            "d":"e"
+          },
+"correctAnswer":"d"},
+            
+{"question":"10. In the above question, if parasitic capacitances are taken into consideration then what is the optimum value of a?",
+"answers":{
+            "a":"4",
+            "b":"e",
+            "c":"1/e",
+            "d":"2"
+          },
+"correctAnswer":"a"}            
+            
 ]
