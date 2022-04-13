@@ -2,238 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual labs</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.7-b/css/style.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual labs</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-    <div class="columns is-centered is-flex my-0">
-        <div class="column is-6-desktop is-10-tablet is-10-mobile">
-            <div class="instruction-box">
-                <button id="instruction-bar" onclick="expand_instructions()" class="collapsible"> Instructions </button>
-                <div id="content-box" class="content">
-                  <ul style="list-style: disc;">
-                    <li>Click or tap on an element in the tool bar to place it in the workspace</li>
-                    <li>Double click on a wire to delete it</li>
-                    <li>Double click on input element to change it's value</li>
-                    <li>If you did anything wrong click on reset button</li>
-                    <li>Select the appropriate tab and click on validate after completion of circuit</li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="columns is-centered is-flex mt-2">
+		<div class="column is-6-desktop is-10-tablet is-10-mobile">
+			<div class="v-collapsible-instruction-container">
+				<div class="v-collapsible is-size-5">Instructions</div>
+				<div class="v-content">
+					<ul style="list-style: disc;">
+						<li>Click or tap on an element in the tool bar to place it in the workspace</li>
+						<li>Double click on a wire to delete it</li>
+						<li>Double click on input element to change it's value</li>
+						<li>If you did anything wrong click on reset button</li>
+						<li>Select the appropriate tab and click on validate after completion of circuit</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap my-0">
-        <div id="start" class="column is-2-desktop is-2-tablet is-3-mobile my-2 center-content">
-            <button class="v-button" onclick="invertervalidate()">Validate</button>
-        </div>
-        <div id="restart" class="column is-2-desktop is-2-tablet is-3-mobile my-2 center-content">
-            <button class="v-button" onclick="refresh()">Reset</button>
-        </div>
-    </div>
+	<div class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap">
+		<div id="start" class="column is-2-desktop is-2-tablet is-3-mobile center-content">
+			<button class="v-button" onclick="inverterValidate()">Validate</button>
+		</div>
+		<div id="restart" class="column is-2-desktop is-2-tablet is-3-mobile center-content">
+			<button class="v-button" onclick="location.reload()">Reset</button>
+		</div>
+	</div>
 
-    <div id="error-container" class="columns is-centered is-flex my-0" style="display:none !important;">
-        <div class="column is-6-desktop is-10-tablet is-10-mobile">
-            <div class="text-danger">
-                Required no.of components of this type are already present in the workspace
-            </div>
-        </div>
-    </div>
+	<div class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap">
+		<div class="column is-2-desktop is-3-tablet is-2-mobile center-content">
+			<div class="v-datalist-container">
+				<div class="v-datalist-title">
+					ToolBar
+				</div>
+				<div class="v-datalist-row toolbar-item-list">
+					<div class="toolbar-component" onclick="compInverter()">
+						<div class="each-toolbar-component has-text-centered">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+								version="1.1" viewBox="-0.5 -0.5 84 53">
+								<g>
+									<path d="M 1 26 L 21 26" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3"
+										stroke-miterlimit="10" pointer-events="stroke" />
+									<path d="M 21 1 L 61 26 L 21 51 Z" fill="none" stroke="rgb(0, 0, 0)"
+										stroke-width="3" stroke-miterlimit="10" pointer-events="all" />
+									<ellipse cx="66" cy="26" rx="5" ry="5" fill="none" stroke="rgb(0, 0, 0)"
+										stroke-width="3" pointer-events="all" />
+									<path d="M 71 26 L 81 26" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3"
+										stroke-miterlimit="10" pointer-events="stroke" />
+								</g>
+							</svg>
+							Inverter
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap">
-        <div class="column is-2-desktop is-3-tablet is-2-mobile my-2 center-content">
-            <div class="v-datalist-container">
-                <div class="v-datalist-title">
-                    ToolBar
-                </div>
-                <div class="v-datalist-row toolbar-item-list">
-                    <!-- <div class="toolbar-component" onclick="jpmos()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg class="svg-component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 29.78 77 L 29.78 27" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 35.33 77 L 35.33 27" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 35.33 39.5 L 52 39.5 L 52 2" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.01" />
-                                    <path d="M 52 102 L 52 64.5 L 35.33 64.5" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.01" />
-                                    <path d="M 2 52 L 18.67 52" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <ellipse cx="24.02" cy="51.11" rx="5.357142857142858" ry="5.357142857142858"
-                                        fill="none" stroke="green" stroke-width="2.5" />
-                                </g>
-                            </svg>
-                            PMOS
-                        </div>
-                    </div>
-                    <div class="toolbar-component" onclick="jnmos()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-component" height="100" width="100"
-                                viewBox="0 0 100 100">
-                                <g class="draggable-group">
-                                    <path d="M 27.71 77 L 27.71 27" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 36.29 77 L 36.29 27" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 36.29 39.5 L 62 39.5 L 62 2" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.01" />
-                                    <path d="M 62 102 L 62 64.5 L 36.29 64.5" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.011" />
-                                    <path d="M 2 52 L 27.71 52" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01">
-                                </g>
-                            </svg>
-                            NMOS
-                        </div>
-                    </div>
-                    <div class="toolbar-component" onclick="jvdd()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg class="svg-component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 21 41 L 21 1 L 1 1 L 41 1" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                </g>
-                            </svg>
-                            VDD
-                        </div>
-                    </div>
-                    <div class="toolbar-component" onclick="jground()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-component" height="100" width="100"
-                                viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 1 31 L 61 31 L 31 31 L 31 1" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.01" />
-                                    <path d="M 11 41 L 51 41" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 21 51 L 41 51" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                </g>
-                            </svg>
-                            Ground
-                        </div>
-                    </div> -->
-                    <!-- <div class="toolbar-component" onclick="jinput()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-component" height="100" width="100"
-                                viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 1 31 L 1 1 L 61 1 L 41 31" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 1 31 L 41 31" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                </g>
-                            </svg>
-                            Input
-                        </div>
-                    </div>
-                    <div class="toolbar-component" onclick="joutput()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-component" height="100" width="100"
-                                viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 61 31 L 61 1 L 1 1 L 21 31" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                    <path d="M 61 31 L 21 31" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" />
-                                </g>
-                            </svg>
-                            Output
-                        </div>
-                    </div> -->
-                    <div class="toolbar-component" onclick="jinverter()">
-                        <div class="each-toolbar-component has-text-centered">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-component" height="100" width="100"
-                                viewBox="0 0 100 100">
-                                <g>
-                                    <path d="M 31 81 L 71 41 L 31 1 L 31 81" fill="none" stroke="green"
-                                        stroke-width="2.5" stroke-miterlimit="0.01" pointer-events="stroke" />
-                                    <path d="M 1 41 L 31 41" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" pointer-events="stroke" />
-                                    <ellipse cx="81" cy="41" rx="10" ry="10" fill="none" stroke="green"
-                                        stroke-width="2.5" pointer-events="all" />
-                                    <path d="M 91 41 L 111 41" fill="none" stroke="green" stroke-width="2.5"
-                                        stroke-miterlimit="0.01" pointer-events="stroke" />
-                                </g>
-                            </svg>
-                            Inverter
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="column is-7-desktop is-9-tablet is-10-mobile center-content">
+			<div class="is-flex is-flex-wrap-wrap center-content simulation-container" id="diagram">
+			</div>
+		</div>
 
-        <div class="column is-7-desktop is-9-tablet is-10-mobile my-2 center-content">
-            <div class="is-flex is-flex-wrap-wrap center-content simulation-container" id="diagram">
-            </div>
-        </div>
+		<div class="column is-3-desktop is-8-tablet is-8-mobile center-content">
+			<div class="v-datalist-container">
+				<div class="v-datalist-title">
+					Observation
+				</div>
+				<div class="v-datalist-row" id="output-box">
+					<img src="" id="graph-image" style="display:none" alt="Image of graph">
+				</div>
+				<div id="output-text">
 
-        <div class="column is-3-desktop is-8-tablet is-8-mobile my-2 center-content">
-            <div class="v-datalist-container">
-                <div class="v-datalist-title">
-                    Observation
-                </div>
-                <div class="v-datalist-row" id="output-box">
-                    <img src="./images/Screenshot (169).png" id="graph-image" style="display:none" alt="Image of graph">
-                </div>
-                <!-- <div id = "output-box">
-                    <img src="./images/Screenshot (150).png" id="graph-image" style="display:none" alt="Image of graph">
-                </div> -->
-            </div>
-        </div>
-    </div>
+				</div>
+				<div class="v-datalist-row text-danger" id="error-container" style="display:none;">
+					Required no.of components of this type are already present in the workspace
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <script>
+	<script>
 
-        const jsmap = new Map();
-        var list_pmos = [];
-        var list_nmos = [];
-        var list_input = [];
-        var list_ouput = [];
-        var list_ground = [];
-        var list_vdd = [];
-        var list_inverter = [];
+		const connectionMap = new Map();
 
-        var container = document.getElementById("diagram");
-        container.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        });
+		const container = document.getElementById("diagram");
+		container.addEventListener("contextmenu", function (e) {
+			e.preventDefault();
+		});
 
-        function expand_instructions()
-        {
-            a = document.getElementById("instruction-bar")
-            b = document.getElementById("content-box")
-            if(a.classList.contains("active")){
-                a.classList.remove("active")
-                b.classList.remove("content-box-height")
-            }
-            else{
-                a.classList.add("active")
-                b.classList.remove("content")
-                b.classList.add("content-box-height")
-                b.classList.add("content")
-            }
-        }
+	</script>
 
-    </script>
+	<script src="js/components.js"></script>
+	<script src="js/integrate.js"></script>
+	<script src="js/inverter.js"></script>
 
-    <script src="js/components.js"></script>
-    <script src="js/integrate.js"></script>
-    <script src="js/circuit.js"></script>
-    <script src="js/inverter.js"></script>
-
-    <script>
-        jf2input0()
-        jf2output()
-    </script>
-
+	<script>
+		comp2Input0()
+		comp2Output()
+	</script>
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
 </body>
+
 </html>

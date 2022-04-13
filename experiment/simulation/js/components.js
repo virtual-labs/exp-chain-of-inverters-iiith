@@ -1,6 +1,4 @@
-
-var instance = jsPlumb.getInstance({
-
+const jsplumbInstance = jsPlumb.getInstance({
     container: diagram,
     maxConnections: -1,
     endpoint: {
@@ -15,8 +13,8 @@ var instance = jsPlumb.getInstance({
     paintStyle: { strokeWidth: 3, stroke: "#456" },
     connectionsDetachable: true,
 });
-instance.bind("ready", function () {
-    instance.registerConnectionTypes({
+jsplumbInstance.bind("ready", function () {
+    jsplumbInstance.registerConnectionTypes({
         "red-connection": {
             paintStyle: { stroke: "red", strokeWidth: 3 },
             hoverPaintStyle: { stroke: "red", strokeWidth: 8 },
@@ -26,306 +24,60 @@ instance.bind("ready", function () {
 });
 
 
-instance.bind("connection", function (ci) {
-    let con = instance.getAllConnections();
-    jsmap.clear();
+jsplumbInstance.bind("connection", () => {
+    const con = jsplumbInstance.getAllConnections();
+    connectionMap.clear();
     for (i = 0; i < con.length; i++) {
-        var s = con[i].sourceId, t = con[i].targetId;
-        let r = s.concat("$", t);
-        jsmap.set(r, t)
+        const s = con[i].sourceId, t = con[i].targetId;
+        const r = s.concat("$", t);
+        connectionMap.set(r, t)
 
     }
 });
-instance.bind("dblclick", function (ci) {
+jsplumbInstance.bind("dblclick", function (ci) {
 
-    instance.deleteConnection(ci);
-    let con = instance.getAllConnections();
-    jsmap.clear();
+    jsplumbInstance.deleteConnection(ci);
+    const con = jsplumbInstance.getAllConnections();
+    connectionMap.clear();
     for (i = 0; i < con.length; i++) {
-        var s = con[i].sourceId, t = con[i].targetId;
-        let r = s.concat("$", t);
-        jsmap.set(r, t)
+        const s = con[i].sourceId, t = con[i].targetId;
+        const r = s.concat("$", t);
+        connectionMap.set(r, t)
 
     }
-    console.log(jsmap)
+    console.log(connectionMap)
 
 });
-/*instance.bind("click", function (conn) {
 
-    instance.remove(conn);
-});*/
+const count = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 0, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 }
+const maxCount = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 5, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 }
 
-var count1 = 0;
-var count2 = 0;
-var count3 = 0;
-var count4 = 0;
-var count5 = 0;
-var count6 = 0;
-var count7 = 0;
-var count8 = 0;
-var count9 = 0;
-var count10 = 0;
-var count11 = 0;
-var count12 = 0;
-var comp_count1 = 1
-var comp_count2 = 1
-var comp_count3 = 1
-var comp_count4 = 1
 
-function addinstancepmos(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Bottom"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        isTarget: true,
-        //isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    console.log(instance);
+function addInstanceInverter(id) {
+    addInstance(id, [1, 0.5, 1, 0], -1, true)
+    addInstance(id, [0, 0.5, -1, 0], -1, false)
 }
 
-function addinstancenmos(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Bottom"],
-        isTarget: true,
-        //isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        isTarget: true,
-        //isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        // isTarget: true,
-        isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-
+function addInstanceFinalInput(id) {
+    addInstance(id, [1, 0.5, 1, 0], -1, true)
 }
 
-function addinstancevdd(id) {
-    instance.addEndpoint(id, {
+function addInstanceFinalOutput(id) {
+    addInstance(id, [0, 0.5, -1, 0], -1, false)
+}
+
+function addInstance(id, position, num, src) {
+    jsplumbInstance.addEndpoint(id, {
         endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Bottom"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
+        anchor: position,
+        isTarget: !src,
+        isSource: src,
+        maxConnections: num,
         connectionType: "red-connection"
     });
 }
 
-function addinstanceground(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        isSource: true,
-        //isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-
-
-function addinstanceinput(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-function addinstanceinverter(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-function addinstanceoutput(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        // isSource: true,
-        isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-function addinstancemux(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: [0, 0.25, -1, 0],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: [0, 0.75, -1, 0],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-function addinstancelatch(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        // isSource: true,
-        isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-function addinstancetransistor(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Top"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        // isSource: true,
-        isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Bottom"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-function addinstanceclock(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        //isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-function addinstanceclockbar(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        //isTarget: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-function addinstancefinalinput(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Right"],
-        isSource: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
-
-function addinstancefinaloutput(id) {
-    instance.addEndpoint(id, {
-        endpoint: ["Dot", { radius: 5 }],
-        anchor: ["Left"],
-        isTarget: true,
-        // isSource: true,
-        maxConnections: -1,
-        connectionType: "red-connection"
-    });
-}
+// top -> [0.5, 0, 0, -1]
+// bottom -> [ 0.5, 1, 0, 1 ]
+// right -> [1, 0.5, 1, 0]
+// left -> [0, 0.5, -1, 0]
