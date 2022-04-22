@@ -1,0 +1,52 @@
+[
+    {
+        "question": "1.Predict the electrical output Cout for a circuit whose gate delay is given as 15 units and intrinstic delay as 6 units and logical effort is 3 units (Cin is 1)",
+        "answers": {
+            "a": "5 units ",
+            "b": "9 units ",
+            "c": "3 units ",
+            "d": "4 units "
+        },
+        "correctAnswer": "c"
+    },
+    {
+        "question": "2. In order to have a faster inverter circuit what can be done ?",
+        "answers": {
+            "a": "Decrease  the supply voltage ",
+            "b": "Decrease the threshold volatge ",
+            "c": "Increase parasitic capacitance ",
+            "d": "Decrease the value of W/L "
+        },
+        "correctAnswer": "b"
+    },
+    {
+        "question": "3. Ratio of logic factors of nand gate and nor gate can be  ",
+        "answers": {
+            "a": "4/5 ",
+            "b": "5/7 ",
+            "c": "2/3 ",
+            "d": "both a and b "
+        },
+        "correctAnswer": "d"
+    },
+    {
+        "question": "4.In which of the following circuits inverter is used ",
+        "answers": {
+            "a": "Mulitplexer ",
+            "b": "Nand gate ",
+            "c": "D latch ",
+            "d": "both b and c "
+        },
+        "correctAnswer": "d"
+    },
+    {
+        "question": "5. Gate complexity is important because :",
+        "answers": {
+            "a": "It reduces speed of circuit",
+            "b": "Determines how input power is structured  ",
+            "c": "Both a and b ",
+            "d": "None"
+        },
+        "correctAnswer": "a"
+    }
+]

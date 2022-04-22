@@ -1,3 +1,5 @@
+'use strict';
+
 const jsplumbInstance = jsPlumb.getInstance({
     container: diagram,
     maxConnections: -1,
@@ -13,7 +15,7 @@ const jsplumbInstance = jsPlumb.getInstance({
     paintStyle: { strokeWidth: 3, stroke: "#456" },
     connectionsDetachable: true,
 });
-jsplumbInstance.bind("ready", function () {
+jsplumbInstance.bind("ready", function() {
     jsplumbInstance.registerConnectionTypes({
         "red-connection": {
             paintStyle: { stroke: "red", strokeWidth: 3 },
@@ -25,43 +27,38 @@ jsplumbInstance.bind("ready", function () {
 
 
 function editConnectionMap() {
-    const con = jsplumbInstance.getAllConnections();
     connectionMap.clear();
-    for (i = 0; i < con.length; i++) {
-        const s = con[i].sourceId, t = con[i].targetId;
-        const r = s.concat("$", t);
-        connectionMap.set(r, t)
-
-    }
+    jsplumbInstance.getAllConnections().forEach(connection => {
+        const connectionId = `${connection.sourceId}$${connection.targetId}`
+        connectionMap.set(connectionId, connection.targetId)
+    });
 }
 
 jsplumbInstance.bind("connection", () => {
     editConnectionMap()
 });
 
-jsplumbInstance.bind("dblclick", function (ci) {
-
+jsplumbInstance.bind("dblclick", function(ci) {
     jsplumbInstance.deleteConnection(ci);
     editConnectionMap()
-
 });
 
-const count = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 0, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 }
-const maxCount = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 5, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 }
+const count = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 0, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 };
+const maxCount = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 5, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 };
 
 
 function addInstanceInverter(id) {
     addInstance(id, [1, 0.5, 1, 0], -1, true)
     addInstance(id, [0, 0.5, -1, 0], -1, false)
-}
+};
 
 function addInstanceFinalInput(id) {
     addInstance(id, [1, 0.5, 1, 0], -1, true)
-}
+};
 
 function addInstanceFinalOutput(id) {
     addInstance(id, [0, 0.5, -1, 0], -1, false)
-}
+};
 
 function addInstance(id, position, num, src) {
     jsplumbInstance.addEndpoint(id, {
@@ -72,7 +69,7 @@ function addInstance(id, position, num, src) {
         maxConnections: num,
         connectionType: "red-connection"
     });
-}
+};
 
 // top -> [0.5, 0, 0, -1]
 // bottom -> [ 0.5, 1, 0, 1 ]
