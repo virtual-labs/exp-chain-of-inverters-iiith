@@ -20,7 +20,6 @@
   border-radius: 0.625rem;
   border: 0.125rem solid green;
   width: 5rem;
-  /* width: 7rem; */
   min-height: 4.75rem;
   text-align: center;
   cursor: move;
@@ -32,7 +31,6 @@
 #diagram .component2 {
   border-radius: 0.625rem;
   border: 0.125rem solid green;
-  /* width: 5rem; */
   width: 7rem;
   min-height: 4.75rem;
   text-align: center;
@@ -121,11 +119,11 @@
   }
   #diagram .component {
     width: 3.125rem;
-    min-height: 2.96875rem;
+    min-height: 2.96rem;
   }
   #diagram .component2 {
     width: 4.375rem;
-    min-height: 2.96875rem;
+    min-height: 2.96rem;
   }
   .each-toolbar-component {
     font-size: 0.7rem;
@@ -146,6 +144,11 @@
 
 #output-box{
   overflow: auto;
+  min-height: 70%;
 }
 
-/* 16 -> 1*/
+#output-box > img{
+  height: 100%;
+  vertical-align: bottom;
+  max-width: 300%;
+}
