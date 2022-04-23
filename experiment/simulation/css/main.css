@@ -87,7 +87,7 @@
 
 .each-toolbar-component {
   padding: 0.625rem;
-  font-size: 0.9rem ;
+  font-size: 0.9rem;
 }
 
 .svg-component {
@@ -114,17 +114,21 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
+
   .toolbar-component {
     width: 90%
   }
+
   #diagram .component {
     width: 3.125rem;
     min-height: 2.96rem;
   }
+
   #diagram .component2 {
     width: 4.375rem;
     min-height: 2.96rem;
   }
+
   .each-toolbar-component {
     font-size: 0.7rem;
   }
@@ -135,6 +139,7 @@
     width: 4.375rem;
     min-height: 4.15625rem;
   }
+
   #diagram .component2 {
     width: 6.125rem;
     min-height: 4.15625rem;
@@ -142,12 +147,12 @@
 
 }
 
-#output-box{
+#output-box {
   overflow: auto;
   min-height: 70%;
 }
 
-#output-box > img{
+#output-box>img {
   height: 100%;
   vertical-align: bottom;
   max-width: 300%;
