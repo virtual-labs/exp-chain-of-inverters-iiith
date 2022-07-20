@@ -45,7 +45,7 @@
   border: 0.125rem solid green;
   width: 3.75rem;
   text-align: center;
-  cursor: move;
+  cursor: pointer;
   position: absolute;
   background-color: white;
   color: black;
@@ -164,4 +164,10 @@
   stroke-width: 3;
   stroke-miterlimit: 10;
   pointer-events: stroke;
+}
+
+.v-instruction-container {
+  margin-top: 30px;
+  border: .2rem solid #97d23d;
+  justify-content: flex-start;
 }

@@ -1,6 +1,6 @@
 'use strict';
-
-function permutator(inputArr) {
+import { connectionMap } from "./main.js";
+export function permutator(inputArr) {
     const results = [];
 
     function permute(arr, memo) {
@@ -23,7 +23,7 @@ function permutator(inputArr) {
     return permute(inputArr);
 }
 
-function inverterValidate() {
+export function inverterValidate() {
     const permutatorMap = permutator([0, 1, 2, 3, 4]);
     let circuitValid = 0;
     for (let i = 0; i < permutatorMap.length; i++) {
@@ -34,20 +34,20 @@ function inverterValidate() {
     }
     document.getElementById('error-container').style = 'display:none;';
     if (circuitValid) {
-        document.getElementById("graph-image").src = "./images/delay-inverter.png"
+        document.getElementById("graph-image").src = "./images/delay-inverter.png";
         document.getElementById("graph-image").style.display = "block";
         document.getElementById("output-box").style.display = "block";
-        changeObservation("&#10004; Circuit is correct", 'text-danger', 'text-success')
+        changeObservation("&#10004; Circuit is correct", 'text-danger', 'text-success');
     } else {
         document.getElementById("graph-image").style.display = "none";
         document.getElementById("output-box").style.display = "none";
-        changeObservation("&#10060; Circuit is incorrect", 'text-success', 'text-danger')
+        changeObservation("&#10060; Circuit is incorrect", 'text-success', 'text-danger');
     }
 }
 
-function changeObservation(htmlText, removedClass, addedClass) {
+export function changeObservation(htmlText, removedClass, addedClass) {
     const observationBoxElem = document.getElementById("output-text");
     observationBoxElem.innerHTML = htmlText;
     observationBoxElem.classList.remove(removedClass);
     observationBoxElem.classList.add(addedClass);
-};
+}
