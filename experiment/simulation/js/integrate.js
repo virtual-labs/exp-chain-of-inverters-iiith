@@ -21,7 +21,7 @@ export function compInverter() {
     const id = "inverter" + count.Inverter;
     const svgElement = document.createElement('div');
     svgElement.innerHTML = 
-    `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="-0.5 -0.5 84 53">
+    `<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" viewBox="-0.5 -0.5 84 53">
         <g class="demo-transistor">
             <path d="M 1 26 L 21 26" />
             <path d="M 21 1 L 61 26 L 21 51 Z" />

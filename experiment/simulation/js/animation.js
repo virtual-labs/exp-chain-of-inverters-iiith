@@ -214,7 +214,7 @@ function simulationStatus() {
 function stopCircuit() {
     if (timeline.progress() !== 1) {
         timeline.pause();
-        observ.innerHTML = "Simulation has been stopped.";
+        observ.innerHTML = "Simulation has been Paused";
         decide = false;
         status.innerHTML = "Start";
     }
@@ -241,9 +241,6 @@ function startCircuit() {
         }
         else if (textInput[0].textContent === "2") {
             observ.innerHTML = "Please set the value of input to either 0 or 1";
-        }
-        else if (timeline.progress() === 1) {
-            observ.innerHTML = "Please Restart the simulation";
         }
     }
 }
@@ -290,168 +287,40 @@ function simulator1Task1() {
 function simulator1Task2() {
     setter(textInput[0].textContent, inputDots[1]);
     objectAppear(inputDots[1]);
-    timeline.to(inputDots[1], {
-        motionPath: {
-            path: "#path1",
-            align: "#path1",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
 
-        duration: 4,
-        delay: 0,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 
 function simulator2Task2() {
     setter(getReverse(textInput[0].textContent), inputDots[2]);
     objectAppear(inputDots[2]);
-    timeline.to(inputDots[2], {
-        motionPath: {
-            path: "#path2",
-            align: "#path2",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
 
-        duration: 4,
-        delay: 4,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 
 function simulator3Task2() {
     setter(textInput[0].textContent, inputDots[3]);
     objectAppear(inputDots[3]);
-    timeline.to(inputDots[3], {
-        motionPath: {
-            path: "#path3",
-            align: "#path3",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
 
-        duration: 4,
-        delay: 8,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 
 function simulator1Task3() {
     setter(textInput[0].textContent, inputDots[4]);
     objectAppear(inputDots[4]);
-    timeline.to(inputDots[4], {
-        motionPath: {
-            path: "#path4",
-            align: "#path4",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
-        duration: 2.8,
-        delay: 0,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 function simulator2Task3() {
     setter(getReverse(textInput[0].textContent), inputDots[5]);
     objectAppear(inputDots[5]);
-    timeline.to(inputDots[5], {
-        motionPath: {
-            path: "#path5",
-            align: "#path5",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
-        duration: 2.8,
-        delay: 2.8,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 function simulator3Task3() {
     setter(textInput[0].textContent, inputDots[6]);
     objectAppear(inputDots[6]);
-    timeline.to(inputDots[6], {
-        motionPath: {
-            path: "#path6",
-            align: "#path6",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
-        duration: 2.8,
-        delay: 5.6,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 function simulator4Task3() {
     setter(getReverse(textInput[0].textContent), inputDots[7]);
     objectAppear(inputDots[7]);
-    timeline.to(inputDots[7], {
-        motionPath: {
-            path: "#path7",
-            align: "#path7",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
-        duration: 2.8,
-        delay: 8.4,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 function simulator5Task3() {
     setter(textInput[0].textContent, inputDots[8]);
     objectAppear(inputDots[8]);
-    timeline.to(inputDots[8], {
-        motionPath: {
-            path: "#path8",
-            align: "#path8",
-            autoRotate: true,
-            alignOrigin: [0.5, 0.5]
-        },
-        duration: 2.8,
-        delay: 11.2,
-        repeat: 0,
-        repeatDelay: 3,
-        yoyo: true,
-        ease: "none",
-        paused: false,
-
-    }, 0);
 }
 
 
@@ -482,15 +351,147 @@ outputDisappear();
 timeline.add(simulator1Task1, 0);
 timeline.add(simulator1Task2, 0);
 timeline.add(simulator1Task3, 0);
-timeline.add(simulator2Task3, 2.8);
-timeline.add(simulator2Task2, 4);
-timeline.add(simulator3Task3, 5.6);
-timeline.add(simulator3Task2, 8);
-timeline.add(simulator4Task3, 8.4);
-timeline.add(simulator5Task3, 11.2);
+timeline.add(simulator2Task3, 3);
+timeline.add(simulator2Task2, 4.33);
+timeline.add(simulator3Task3, 6);
+timeline.add(simulator3Task2, 8.76);
+timeline.add(simulator4Task3, 9);
+timeline.add(simulator5Task3, 12);
 timeline.add(inputDotsDisappear, 14);
 timeline.add(outputHandler, 14);
 timeline.add(display, 14);
 timeline.eventCallback("onComplete", display);
 timeline.pause();
+
+timeline.to(inputDots[1], {
+    motionPath: {
+        path: "#path1",
+        align: "#path1",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+
+    duration: 3.33,
+    delay: 0,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[2], {
+    motionPath: {
+        path: "#path2",
+        align: "#path2",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+
+    duration: 3.33,
+    delay: 4.33,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[3], {
+    motionPath: {
+        path: "#path3",
+        align: "#path3",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+
+    duration: 3.33,
+    delay: 8.76,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[4], {
+    motionPath: {
+        path: "#path4",
+        align: "#path4",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+    duration: 2,
+    delay: 0,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[5], {
+    motionPath: {
+        path: "#path5",
+        align: "#path5",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+    duration: 2,
+    delay: 3,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[6], {
+    motionPath: {
+        path: "#path6",
+        align: "#path6",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+    duration: 2,
+    delay: 6,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[7], {
+    motionPath: {
+        path: "#path7",
+        align: "#path7",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+    duration: 2,
+    delay: 9,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
+timeline.to(inputDots[8], {
+    motionPath: {
+        path: "#path8",
+        align: "#path8",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+    },
+    duration: 2,
+    delay: 12,
+    repeat: 0,
+    repeatDelay: 3,
+    yoyo: true,
+    ease: "none",
+    paused: false,
+
+}, 0);
 inputDotsDisappear();

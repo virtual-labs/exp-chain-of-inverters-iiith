@@ -1,16 +1,6 @@
 [
   {
-    "question": "1. Can we reduce delay to zero? ",
-    "answers": {
-      "a": "Yes",
-      "b": "No",
-      "c": "Yes in most of the cases",
-      "d": "Yes in very few cases"
-    },
-    "correctAnswer": "b["
-  },
-  {
-    "question": "2. What you mean by delay?",
+    "question": "1. What you mean by delay?",
     "answers": {
       "a": "Time to correctly access the input",
       "b": "Time to correctly access the output",
@@ -18,6 +8,16 @@
       "d": "Time taken for the output to come after the input has been captured"
     },
     "correctAnswer": "d"
+  },
+  {
+    "question": "2. Can we reduce delay to zero?",
+    "answers": {
+      "a": "Yes",
+      "b": "No",
+      "c": "Yes in most of the cases",
+      "d": "Yes in very few cases"
+    },
+    "correctAnswer": "b"
   },
   {
     "question": "3. The optimum size of each inverter is ________ of its neighbours",
@@ -52,7 +52,7 @@
   {
     "question": "6. If the gate size is increased by n then what will be the effect on its capacitance?",
     "answers": {
-      "a": "Increases by n2",
+      "a": "Increases by n<sup>2</sup>",
       "b": "Increases by n",
       "c": "Decreases by n",
       "d": "Remains constant"
@@ -70,7 +70,7 @@
     "correctAnswer": "d"
   },
   {
-    "question": "8. For minimm delay, what is the no of inverters in the chain connected in series?",
+    "question": "8. For minimum delay, what is the number of inverters in the chain connected in series?",
     "answers": {
       "a": "4",
       "b": "5",
