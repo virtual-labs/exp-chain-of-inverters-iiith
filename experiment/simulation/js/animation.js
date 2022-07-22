@@ -421,7 +421,7 @@ timeline.to(inputDots[4], {
         autoRotate: true,
         alignOrigin: [0.5, 0.5]
     },
-    duration: 2,
+    duration: 1.5,
     delay: 0,
     repeat: 0,
     repeatDelay: 3,

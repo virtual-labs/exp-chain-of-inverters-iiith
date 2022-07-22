@@ -21,7 +21,7 @@
 				<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
 					<ul style="list-style: disc;">
 						<li>Click on components on the left side to add them to the circuit board.</li>
-						<li>For this experiment you need 5 inverter</li>
+						<li>For this experiment you need <b>5 inverters</b></li>
 						<li>Drag and drop components to move them around, connect them using wires by dragging your
 							cursor from one endpoint to another.</li>
 						<li>Double click on a wire to delete it.</li>
@@ -32,19 +32,15 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="columns is-variable is-1 is-centered is-flex-wrap-wrap">
-		<div id="start" class="column is-2-desktop is-2-tablet is-3-mobile center-content">
-			<button class="v-button" onclick="inverterValidate()">Validate</button>
-		</div>
-		<div id="restart" class="column is-2-desktop is-2-tablet is-3-mobile center-content">
-			<button class="v-button" onclick="refreshWorkingArea()">Reset</button>
-		</div>
-	</div>
-
-	<div class="columns is-variable is-1 is-centered is-flex-wrap-wrap">
-		<div class="column is-2-desktop is-3-tablet is-2-mobile center-content">
-			<div class="v-datalist-container">
+	<div class="columns is-centered">
+        <div class="column" style="margin:auto;text-align:center">
+            <button class="v-button" onclick="inverterValidate()">Validate</button>
+            <button class="v-button" onclick="refreshWorkingArea()">Reset</button>
+        </div>
+    </div>
+	<div class="columns is-centered is-flex is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+		<div class="column is-2-desktop is-12-tablet is-12-mobile">
+			<div class="v-datalist-container" style="height:100%">
 				<div class="v-datalist-title">
 					ToolBar
 				</div>
@@ -67,13 +63,13 @@
 			</div>
 		</div>
 
-		<div class="column is-7-desktop is-9-tablet is-10-mobile center-content">
+		<div class="column is-7-desktop is-12-tablet is-12-mobile center-content">
 			<div class="is-flex-wrap-wrap center-content simulation-container" id="diagram">
 			</div>
 		</div>
 
-		<div class="column is-3-desktop is-8-tablet is-8-mobile center-content">
-			<div class="v-datalist-container">
+		<div class="column is-3-desktop is-12-tablet is-12-mobile center-content">
+			<div class="v-datalist-container toolbar-item-list">
 				<div class="v-datalist-title">
 					Observation
 				</div>
