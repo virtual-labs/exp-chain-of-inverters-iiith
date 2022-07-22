@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/MotionPathPlugin.min.js"></script>
+    <title>
+        Chain of Inver: Demo
+    </title>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 1%;">
+        <div class="columns is-centered">
+            <div class="column is-one-quarter v-instruction-title">
+                Tasks
+            </div>
+            <div class="column">
+                <div class="v-tabs">
+                    <ul>
+                        <li id="task1" class="is-active">
+                            <a>
+                                Chain of Inverter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="v-collapsible-instruction-container v-instruction-container">
+                    <div class="v-collapsible is-size-5">Instructions</div>
+                    <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+                        <ul style="list-style: disc;">
+                            <li><b>Start</b>- Starts the simulation after the inputs are properly selected. Default
+                                speed is 1x.</li>
+                            <li>Clicking on any one input bit automatically sets the other input bits.</li>
+                            <li>Select the speed through dropdown menu</li>
+                            <li><b>Reset</b> - Resets the simulation</li>
+                            <li>Click on the green input bits to set their values.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column" style="margin:auto;text-align:center">
+            <select class="speed-box" autocomplete="off" name="speed" onchange="setSpeed(this.value)" id="speed">
+                <option value="1">1x</option>
+                <option value="2">2x</option>
+                <option value="4">4x</option>
+            </select>
+            <button class="v-button" id="play-or-pause" onclick="simulationStatus()">Start</button>
+            <button class="v-button" id="restart" onclick="restartCircuit()">Reset</button>
+        </div>
+    </div>
+
+    <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+        <div class="column is-7-desktop is-12-tablet is-12-mobile">
+            <div id="circuit-board">
+                <svg class="svg" xmlns="https://www.w3.org/2000/svg" width="100%" height="120%"
+                    viewBox="-50 -15 1020 1000">
+                    <g class="gate-demo">
+                        <path class="gate-demo" d="M 600 365 L 600 335 L 640 365 L 600 395 L 600 365 " />
+                        <circle cx="650" cy="365" r="10" class="gate-demo" />
+                    </g>
+                    <g class="gate-demo">
+                        <path class="gate-demo" d="M 300 365 L 300 335 L 340 365 L 300 395 L 300 365 " />
+                        <circle cx="350" cy="365" r="10" class="gate-demo" />
+                    </g>
+                    <g>
+                        <path class="gate-demo" d="M 132 630 L 132 600 L 172 630 L 132 660 L 132 630 " />
+                        <circle cx="182" cy="630" r="10" class="gate-demo" />
+                    </g>
+                    <g class="gate-demo">
+                        <path class="gate-demo" d="M 324 630 L 324 600 L 364 630 L 324 660 L 324 630 " />
+                        <circle cx="374" cy="630" r="10" class="gate-demo" />
+                    </g>
+                    <g class="gate-demo">
+                        <path class="gate-demo" d="M 516 630 L 516 600 L 556 630 L 516 660 L 516 630 " />
+                        <circle cx="566" cy="630" r="10" class="gate-demo" />
+                    </g>
+                    <g class="gate-demo">
+                        <path class="gate-demo" d="M 708 630 L 708 600 L 748 630 L 708 660 L 708 630 " />
+                        <circle cx="758" cy="630" r="10" class="gate-demo" />
+                    </g>
+                    <path id="path0" d="M 0 100 L 900 100" class="demo-wires" /> 
+                    <path id="path1" d="M 0 365 L 300 365 "  class="demo-wires" /> 
+                    <path id="path2" d="M 360 365 L 600 365" class="demo-wires" /> 
+                    <path id="path3" d="M 660 365 L 900 365" class="demo-wires" />                     
+                    <path id="path4" d="M 0 630 L 132 630" class="demo-wires" />
+                    <path id="path5" d="M 192 630 L 324 630" class="demo-wires" />
+                    <path id="path6" d="M 384 630 L 516 630" class="demo-wires" />
+                    <path id="path7" d="M 576 630 L 708 630" class="demo-wires" />
+                    <path id="path8" d="M 768 630 L 900 630" class="demo-wires" />
+                    <circle id="input0" cx="0" cy="100" r="20" onclick="setInput()" class="demo-circles" />
+                    <circle id="input1" cx="0" cy="365" r="20" onclick="setInput()" class="demo-circles" />
+                    <circle id="input2" cx="0" cy="630" r="20" onclick="setInput()" class="demo-circles" />
+                    <circle id="output0" cx="900" cy="100" r="20" class="demo-circles" />
+                    <circle id="output1" cx="900" cy="365" r="20" class="demo-circles" />
+                    <circle id="output2" cx="900" cy="630" r="20" class="demo-circles" />  
+                    <text class="demo-text" x="10" y="170">Input</text>
+                    <text class="demo-text" x="10" y="435">Input</text>
+                    <text class="demo-text" x="10" y="700">Input</text>
+                    <text class="demo-text" x="850" y="170">Output</text>
+                    <text class="demo-text" x="850" y="435">Output</text>
+                    <text class="demo-text" x="850" y="700">Output</text>
+                            
+                </svg>
+            </div>
+        </div>
+        <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+                <div class="v-datalist-title">Observations</div>
+                <div class="v-datalist-row">
+                    <div id="observations"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/animation.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+<script src="../assets/js/iframeResize.js"></script></body>
+
+</html>
