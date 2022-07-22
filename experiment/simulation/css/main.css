@@ -1,11 +1,3 @@
-.v-datalist-container {
-  min-height: 31.25rem;
-  height: 75vh;
-  width: 100%;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 #diagram {
   min-height: 31.25rem;
   height: 75vh;
@@ -45,7 +37,7 @@
   border: 0.125rem solid green;
   width: 3.75rem;
   text-align: center;
-  cursor: move;
+  cursor: pointer;
   position: absolute;
   background-color: white;
   color: black;
@@ -60,24 +52,31 @@
 }
 
 .toolbar-item-list {
+  padding: 2% 5%;
+  text-align: center;
+  height: 100%;
   overflow-y: auto;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: start;
-  justify-content: space-between;
-  padding: 0.625rem;
+  justify-content: center;
+  padding: 10px;
 }
 
 .toolbar-component {
-  margin: 0.3rem;
-  box-sizing: border-box;
-  width: 40%;
-  border: 0.1rem thin rgb(0, 0, 0);
-  background-color: rgb(225, 238, 225);
-  border-radius: 1rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 0.75em;
+  border: 0.2rem solid black;
+  margin: 0.5rem 0.5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  color: black;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .toolbar-component:hover {
@@ -85,7 +84,7 @@
   cursor: pointer;
 }
 
-.each-toolbar-component {
+.each-toolbar-component { 
   padding: 0.625rem;
   font-size: 0.9rem;
 }
@@ -116,7 +115,9 @@
   }
 
   .toolbar-component {
-    width: 90%
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
   }
 
   #diagram .component {
@@ -156,4 +157,24 @@
   height: 100%;
   vertical-align: bottom;
   max-width: 300%;
+}
+
+.demo-transistor {
+  fill: none;
+  stroke: rgb(0, 0, 0);
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  pointer-events: stroke;
+}
+
+.v-instruction-container {
+  margin-top: 30px;
+  border: .2rem solid #97d23d;
+  justify-content: flex-start;
+}
+#graph-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

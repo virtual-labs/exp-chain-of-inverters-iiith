@@ -35,12 +35,26 @@
       "content-type": "assesment"
     },
     {
-      "target": "simulation.html",
-      "source": "simulation/index.html",
-      "label": "Simulation",
+      "target": "demo.html",
+      "source": "simulation/demo.html",
+      "label": "Demo",
       "unit-type": "task",
       "content-type": "simulation"
     },
+    {
+      "target": "simulation.html",
+      "source": "simulation/practice.html",
+      "label": "Practice",
+      "unit-type": "task",
+      "content-type": "simulation"
+    },
+    {
+      "target": "posttest.html",
+      "source": "posttest.json",
+      "label": "Posttest",
+      "unit-type": "task",
+      "content-type": "assesment"
+    },    
     {
       "target": "references.html",
       "source": "references.md",
