@@ -44,7 +44,7 @@
     "answers": {
       "a": "Increases by n",
       "b": "Decreases by n",
-      "c": "Decreases by n2",
+      "c": "Decreases by n<sup>2</sup>",
       "d": "Remains constant"
     },
     "correctAnswer": "b"
