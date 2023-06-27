@@ -1,4 +1,6 @@
-[
+{
+    "version": 2.0,
+    "questions": [
     {
         "question": "1.Predict the electrical output Cout for a circuit whose gate delay is given as 15 units and intrinstic delay as 6 units and logical effort is 3 units (Cin is 1)",
         "answers": {
@@ -7,7 +9,13 @@
             "c": "3 units",
             "d": "4 units"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "advanced"
     },
     {
         "question": "2. In order to have a faster inverter circuit what can be done?",
@@ -17,7 +25,13 @@
             "c": "Increase parasitic capacitance",
             "d": "Decrease the value of W/L"
         },
-        "correctAnswer": "b"
+        "correctAnswer": "b",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "intermediate"
     },
     {
         "question": "3. Ratio of logic factors of nand gate and nor gate can be",
@@ -27,7 +41,13 @@
             "c": "2/3",
             "d": "both a and b"
         },
-        "correctAnswer": "d"
+        "correctAnswer": "d",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "advanced"
     },
     {
         "question": "4.In which of the following circuits inverter is used",
@@ -37,7 +57,13 @@
             "c": "D latch",
             "d": "both b and c"
         },
-        "correctAnswer": "d"
+        "correctAnswer": "d",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "intermediate"
     },
     {
         "question": "5. Gate complexity is important because :",
@@ -47,6 +73,13 @@
             "c": "Both a and b",
             "d": "None"
         },
-        "correctAnswer": "a"
+        "correctAnswer": "a",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "beginner"
     }
 ]
+}
