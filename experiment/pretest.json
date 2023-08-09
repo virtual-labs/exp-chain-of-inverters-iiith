@@ -1,4 +1,7 @@
-[
+
+{
+  "version": 2.0,
+  "questions": [
   {
     "question": "1. What you mean by delay?",
     "answers": {
@@ -7,7 +10,13 @@
       "c": "Average rise time and fall time",
       "d": "Time taken for the output to come after the input has been captured"
     },
-    "correctAnswer": "d"
+    "correctAnswer": "d",
+    "explanations": {
+      "a":"The concept of delay is not related to accessing the input.",
+      "b":"Delay is not about accessing the output.",
+      "c":"Rise time and fall time are measures of how quickly a signal transitions from low to high or high to low, respectively. They are not directly related to delay.",
+      "d":"Delay refers to the time it takes for the output to be produced after the input has been captured or applied. It is a measure of the time delay between the input and output signals in a system."},
+    "difficulty": "beginner"
   },
   {
     "question": "2. Can we reduce delay to zero?",
@@ -17,7 +26,13 @@
       "c": "Yes in most of the cases",
       "d": "Yes in very few cases"
     },
-    "correctAnswer": "b"
+    "correctAnswer": "b",
+    "explanations": {
+      "a":"It is not possible to reduce delay to zero in all cases. There are various factors that contribute to delays, such as network latency, processing time, and distance between the sender and receiver. While it may be possible to minimize delay, achieving a delay of exactly zero is highly unlikely due to these inherent limitations.",
+      "b":"It acknowledges the fact that reducing delay to zero is not feasible in all situations. As mentioned earlier, factors such as network latency and processing time introduce delays that cannot be completely eliminated. Therefore, it is not possible to achieve a delay of zero in all cases.",
+      "c":"While it is true that delays can be minimized in many cases, claiming that it is possible to reduce delay to zero in most cases is not accurate. As explained earlier, there are inherent limitations that prevent achieving a delay of zero in all situations.",
+      "d":"While it may be possible to reduce delays significantly in certain scenarios, reaching zero delay is not practically achievable in only a few cases."},
+    "difficulty": "intermediate"
   },
   {
     "question": "3. The optimum size of each inverter is ________ of its neighbours",
@@ -27,7 +42,13 @@
       "c": "Geometric or arithmetic mean",
       "d": "None of the above"
     },
-    "correctAnswer": "a"
+    "correctAnswer": "a",
+    "explanations": {
+      "a":"In the context of inverter sizing, using the geometric mean ensures that the overall system operates efficiently and avoids imbalances. It helps to maintain a proportional relationship between the sizes of neighboring inverters.",
+      "b":"In the context of inverter sizing, using the arithmetic mean may lead to imbalances and inefficient operation. Each inverter's size may not align properly with its neighbors, potentially causing mismatches and suboptimal performance.",
+      "c":"This contradicts the specificity of the question, which asks for the optimum size",
+      "d":"Atleast one option is correct"},
+    "difficulty": "advanced"
   },
   {
     "question": "4. What does Cg1 corresponds to in the following formula? <img src='images/t54.jpg'>",
@@ -37,17 +58,29 @@
       "c": "Input gate capacitance of first inverter in series",
       "d": "None of the above"
     },
-    "correctAnswer": "c"
+    "correctAnswer": "c",
+    "explanations": {
+      "a":"",
+      "b":"",
+      "c":"",
+      "d":""},
+    "difficulty": "intermediate"
   },
   {
     "question": "5. If the gate size is increased by n then what will be the effect on its resistance?",
     "answers": {
       "a": "Increases by n",
       "b": "Decreases by n",
-      "c": "Decreases by n2",
+      "c": "Decreases by n<sup>2</sup>",
       "d": "Remains constant"
     },
-    "correctAnswer": "b"
+    "correctAnswer": "b",
+    "explanations": {
+      "a":"Increasing the gate size does not directly result in an increase in resistance",
+      "b":"When the gate size is increased by a factor of n, the resistance typically decreases. This is because increasing the size of a conductor reduces its resistance. A larger gate allows for a greater cross-sectional area for current flow, resulting in lower resistance. This relationship is commonly observed in electrical circuits.",
+      "c":"The resistance does not decrease by n^2 when the gate size is increased. The relationship between resistance and size is generally linear or logarithmic, depending on the specific circumstances. The quadratic relationship described in this option is not accurate.",
+      "d":"Changing the size of a conductor affects its resistance"},
+    "difficulty": "advanced"
   },
   {
     "question": "6. If the gate size is increased by n then what will be the effect on its capacitance?",
@@ -57,7 +90,13 @@
       "c": "Decreases by n",
       "d": "Remains constant"
     },
-    "correctAnswer": "b"
+    "correctAnswer": "b",
+    "explanations": {
+      "a":"The capacitance of a gate does not increase by n^2 when the gate size is increased by n. The capacitance of a gate is primarily determined by its geometry and the materials used, not just the size. Increasing the gate size linearly (by n) does not lead to a quadratic increase in capacitance.",
+      "b":"When the gate size is increased by n, the capacitance of the gate also increases by the same factor, n. This is because the capacitance is directly proportional to the size of the gate. As the gate size increases, the area available for charge storage increases, resulting in an increased capacitance.",
+      "c":"Increasing the gate size does not cause a decrease in capacitance",
+      "d":"The capacitance of a gate does not remain constant when the gate size is increased"},
+    "difficulty": "advanced"
   },
   {
     "question": "7. Choose the correct statement from the following.",
@@ -67,7 +106,13 @@
       "c": "The inverter size does not matter as long as the inverter driving the load has very small size",
       "d": "The size of the inverter driving the load is maximum of all and is some multiple of size of the previous inverters"
     },
-    "correctAnswer": "d"
+    "correctAnswer": "d",
+    "explanations": {
+      "a":"In a series connection of inverters, the size of each inverter can vary. The size of the individual inverters depends on the required driving strength and delay considerations. It is not necessary for all inverters to be of the same size in a series connection.",
+      "b":"The size of the inverters does matter, even if the inverter driving the load is large. In a series connection, the delays of the preceding inverters can affect the overall performance, so their sizes are taken into consideration to minimize delay and maintain signal integrity.",
+      "c":"While the size of the driving inverter can have a significant impact on the overall performance, the sizes of the preceding inverters also play a role in determining the overall delay and signal integrity.",
+      "d":"In a series connection of inverters, it is common practice to make the size of the inverter driving the load larger than the previous inverters. By increasing its size, the driving inverter can provide sufficient driving strength to the load and compensate for any voltage drop or delay introduced by the preceding inverters. The size of the driving inverter is typically some multiple of the size of the previous inverters to ensure proper signal propagation."},
+    "difficulty": "advanced"
   },
   {
     "question": "8. For minimum delay, what is the number of inverters in the chain connected in series?",
@@ -77,7 +122,13 @@
       "c": "6",
       "d": "Need to calculate according to the situation given, it is not fixed."
     },
-    "correctAnswer": "d"
+    "correctAnswer": "d",
+    "explanations": {
+      "a":"",
+      "b":"",
+      "c":"",
+      "d":""},
+    "difficulty": "intermediate"
   },
   {
     "question": "9. Let a be the stage ratio of an inverter chain. What is its optimum value to drive a load capacitor with minimum delay?",
@@ -87,7 +138,13 @@
       "c": "2",
       "d": "e"
     },
-    "correctAnswer": "d"
+    "correctAnswer": "d",
+    "explanations": {
+      "a":"The optimal value of the stage ratio depends on various factors such as the technology used, power constraints, and design objectives. Therefore, option a is incorrect.",
+      "b":"This value corresponds to the reciprocal of Euler's number (e). While this value is not a commonly used stage ratio, it is incorrect to claim that it is the optimum value for minimum delay without further context or constraints",
+      "c":"Without additional information or specific constraints, it is not accurate to claim that 2 is the universally optimal stage ratio for minimum delay",
+      "d":"In some cases, using a stage ratio equal to e can result in minimum delay when driving a load capacitor in an inverter chain, depending on the specific design constraints and objectives"},
+    "difficulty": "advanced"
   },
   {
     "question": "10. In the above question, if parasitic capacitances are taken into consideration then what is the optimum value of a?",
@@ -97,6 +154,13 @@
       "c": "1/e",
       "d": "2"
     },
-    "correctAnswer": "a"
+    "correctAnswer": "a",
+    "explanations": {
+      "a":"Without specific details about the parasitic capacitances and their impact on the circuit's performance, it is challenging to determine the exact optimum value. However, in certain situations, a larger stage ratio can help compensate for the effect of parasitic capacitances, reducing the overall delay. Therefore, option a can be considered a plausible choice for the optimum value in the presence of parasitic capacitances.",
+      "b":"While e is a mathematical constant and may have relevance in specific scenarios, it cannot be claimed as the universally optimum value without further context or constraints",
+      "c":"Without additional information, it is not accurate to claim this as the optimum value.",
+      "d":"Without specific details about the parasitic capacitances and their impact, it is difficult to determine the exact optimum value. While 2 might be a reasonable choice in some cases, it cannot be considered universally optimal."},
+    "difficulty": "advanced"
   }
 ]
+}

@@ -15,7 +15,7 @@ Effort delay is a product of logical effort and electrical effort.
 
 **h= g x f**
 
-where, g is logical effort which is a ratio of gate inputâ€™s capacitance to the inverter capacitance when sized to deliver the same current and f is an electrical effort (f= Cout/Cin) which is a function of load/gate size. Logical effort of an inverter is 1 which is shown below.  
+where, g is logical effort which is a ratio of gate input capacitance to the inverter capacitance when sized to deliver the same current and f is an electrical effort (f= Cout/Cin) which is a function of load/gate size. Logical effort of an inverter is 1 which is shown below.  
 
 <img src="images/gateIntro1.jpg">  
 
