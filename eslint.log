@@ -1,0 +1,19 @@
+
+/home/runner/work/exp-chain-of-inverters-iiith/exp-chain-of-inverters-iiith/experiment/simulation/js/animation-utility.js
+   3:5  warning  'gsap' is not defined  no-undef
+  11:5  warning  'gsap' is not defined  no-undef
+  16:5  warning  'gsap' is not defined  no-undef
+  19:5  warning  'gsap' is not defined  no-undef
+  22:5  warning  'gsap' is not defined  no-undef
+
+/home/runner/work/exp-chain-of-inverters-iiith/exp-chain-of-inverters-iiith/experiment/simulation/js/animation.js
+  342:16  warning  'gsap' is not defined              no-undef
+  343:1   warning  'gsap' is not defined              no-undef
+  343:21  warning  'MotionPathPlugin' is not defined  no-undef
+
+/home/runner/work/exp-chain-of-inverters-iiith/exp-chain-of-inverters-iiith/experiment/simulation/js/components.js
+  3:32  warning  'jsPlumb' is not defined  no-undef
+  4:16  warning  'diagram' is not defined  no-undef
+
+✖ 10 problems (0 errors, 10 warnings)
+

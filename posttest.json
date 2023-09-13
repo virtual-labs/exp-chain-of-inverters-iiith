@@ -1,0 +1,87 @@
+
+{
+    "version": 2.0,
+    "questions": [
+    {
+        "question": "1.Predict the electrical output Cout for a circuit whose gate delay is given as 15 units and intrinstic delay as 6 units and logical effort is 3 units (Cin is 1)",
+        "answers": {
+            "a": "5 units",
+            "b": "9 units",
+            "c": "3 units",
+            "d": "4 units"
+        },
+        "correctAnswer": "c",
+        "explanations": {
+          "a":"Using formula Cin*(delay-intrinsic delay)/logical effort, this option is wrong.",
+          "b":"Using formula Cin*(delay-intrinsic delay)/logical effort, this option is wrong.",
+          "c":"Using formula Cin*(delay-intrinsic delay)/logical effort, this option is correct.",
+          "d":"Using formula Cin*(delay-intrinsic delay)/logical effort, this option is wrong."},
+        "difficulty": "advanced"
+    },
+    {
+        "question": "2. In order to have a faster inverter circuit what can be done?",
+        "answers": {
+            "a": "Decrease  the supply voltage",
+            "b": "Decrease the threshold voltage",
+            "c": "Increase parasitic capacitance",
+            "d": "Decrease the value of W/L"
+        },
+        "correctAnswer": "b",
+        "explanations": {
+          "a":"This option is incorrect. Decreasing the supply voltage would actually slow down the inverter circuit's operation.",
+          "b":"By decreasing the threshold voltage, the inverter circuit can operate faster because it requires a smaller input voltage swing to change the output state.",
+          "c":"Increasing parasitic capacitance would lead to slower operation because it increases the capacitive load that the inverter circuit has to drive, resulting in higher charging and discharging times.",
+          "d":"Decreasing the W/L ratio would typically reduce the current carrying capability of the transistor, which could slow down the inverter circuit's operation"},
+        "difficulty": "intermediate"
+
+    },
+    {
+        "question": "3. Ratio of logic factors of nand gate and nor gate can be",
+        "answers": {
+            "a": "4/5",
+            "b": "5/7",
+            "c": "2/3",
+            "d": "both a and b"
+        },
+        "correctAnswer": "d",
+        "explanations": {
+          "a":"",
+          "b":"",
+          "c":"",
+          "d":""},
+        "difficulty": "advanced"
+    },
+    {
+        "question": "4.In which of the following circuits inverter is used",
+        "answers": {
+            "a": "Mulitplexer",
+            "b": "Nand gate",
+            "c": "D latch",
+            "d": "both b and c"
+        },
+        "correctAnswer": "d",
+        "explanations": {
+          "a":"An inverter is not typically used directly in a multiplexer circuit. A multiplexer is a combinational circuit that selects one of multiple input lines and routes it to a single output line based on control inputs. It uses various logic gates, such as AND and OR gates, but not necessarily an inverter.",
+          "b":"A NAND gate is a logic gate that performs the logical NOT-AND operation. It consists of two inputs and one output. If both inputs are 1, the output is 0; otherwise, the output is 1. The inverter is often used as a building block for implementing NAND gates, as it can be used to complement or invert the input signals.",
+          "c":"In many implementations of D latches, an inverter is used to complement the enable input or to provide necessary signal inversions within the circuit.",
+          "d":"In both the NAND gate and the D latch can utilize an inverter in their implementations. The inverter can be used to complement input signals or provide necessary signal inversions to achieve the desired logic functionality."},
+        "difficulty": "intermediate"
+    },
+    {
+        "question": "5. Gate complexity is important because :",
+        "answers": {
+            "a": "It reduces speed of circuit",
+            "b": "Determines how input power is structured",
+            "c": "Both a and b",
+            "d": "None"
+        },
+        "correctAnswer": "a",
+        "explanations": {
+          "a":"The more gates there are, the longer it takes for signals to propagate through the circuit, which can reduce the overall speed of the circuit. Therefore, gate complexity has a direct impact on the speed of a circuit.",
+          "b":"Gate complexity does not determine how input power is structured. Input power structure is usually determined by the power supply or the specific design requirements of the circuit, not by the complexity of the gates used.",
+          "c":"Either one/both are wrong.",
+          "d":"Atleast one option is correct."},
+        "difficulty": "beginner"
+    }
+]
+}
