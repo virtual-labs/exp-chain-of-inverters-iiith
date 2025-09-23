@@ -11,7 +11,55 @@ export function resetCounts() {
     count = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 0, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 };
     maxCount = { PMOS: 0, NMOS: 0, VDD: 0, Ground: 0, Inverter: 5, Mux: 0, Latch: 0, Transistor: 0, Clock: 0, Clockbar: 0 };
 }
+function menu(id, event,type) {
+    contextMenu.style.top = `${event.clientY}px`;
+    contextMenu.style.left = `${event.clientX}px`;
+    contextMenu.style.display = "block";
+    
+    deleteOption.removeEventListener("click", deleteEventHandler);
+    deleteOption.addEventListener("click", deleteEventHandler);
+    
+    function deleteEventHandler(event) {
+        event.preventDefault();
+        const connections = jsplumbInstance.getAllConnections();
+        // console.log("+++++++++++");
+        // console.log(connections);
+    connections.forEach(connection => {
+        if (connection.sourceId === id || connection.targetId === id) {
+            jsplumbInstance.deleteConnection(connection);
+        }
+    });
+        const element = document.getElementById(id);
+        // console.log("type ",count[type]);
+        if (element) {
+            hideEndpoints(id); // Hide all endpoints
+            element.style.display = 'none'; // Hide the element
+            maxCount[type] += 1;
+            count[type] -= 1;
+        }
+        // console.log("type ",count[type]);
+        contextMenu.style.display = "none";
+    }
+}
 
+function hideEndpoints(id) {
+    const endpoints = jsplumbInstance.getEndpoints(id);
+  
+    if (endpoints) {
+        endpoints.forEach(endpoint => {
+        endpoint.canvas.style.visibility = 'hidden';
+        });
+    }
+}
+function showEndpoints(id) {
+    const endpoints = jsplumbInstance.getEndpoints(id);
+    if (endpoints) {
+        endpoints.forEach(endpoint => {
+            
+            endpoint.canvas.style.visibility = 'visible';
+        });
+    }
+}
 export function compInverter() {
     maxCount.Inverter -= 1;
     if (maxCount.Inverter < 0) {
@@ -19,7 +67,9 @@ export function compInverter() {
         return;
     }
     const id = "inverter" + count.Inverter;
-    const svgElement = document.createElement('div');
+    let svgElement = document.getElementById(id);
+    if (!svgElement) {
+    svgElement = document.createElement('div');
     svgElement.innerHTML = 
     `<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" viewBox="-0.5 -0.5 84 53">
         <g class="demo-transistor">
@@ -35,7 +85,15 @@ export function compInverter() {
     const container = document.getElementById("diagram");
     container.insertAdjacentElement("afterbegin", svgElement);
     jsplumbInstance.draggable(id, { "containment": true });
+    svgElement.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        menu(id,event,'Inverter');
+    });
     componentsList.push(svgElement);
+    } else {
+    svgElement.style.display = 'block'; // Show the element if it was previously hidden
+    showEndpoints(id); // Show the endpoints
+}
     addInstanceInverter(id);
 }
 
