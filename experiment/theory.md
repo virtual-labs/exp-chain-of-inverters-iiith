@@ -1,36 +1,115 @@
-In this experiment, our goal is to calculate the propagation delay when some load is driven by a chain of inverters. To start with, let us consider simple case of a single inverter driving a capacitative load CL as shown in the following figure  
+In this experiment, the goal is to calculate the propagation delay when a load is driven by a chain of inverters. We begin with a simple case: a single inverter driving a capacitive load $C_L$.
 
-<img src="images/t51.jpg">  
+<img src="images/t51.jpg" width="400px">
 
-Now we want to optimize size of the inverter, x, when driven by a source resistance R<sub>s</sub> and driving a load of C<sub>L</sub>.    
+---
 
-To drive C<sub>L</sub> fastly, we can make inverter size very large but then R<sub>s</sub> will become very slow while driving such large size inverter as its input capacitance will be very large on increasing size by large amount.  
+### Sizing a Single Inverter
 
-If we reduce the size of an inverter and make it very small such that Rs drive it very quickly, then the delay to drive load capacitance will increase. So there is an optimal point in between these two conditions and we will see that optimal point further in this section  
+When optimizing the size of an inverter ($x$), driven by a source resistance $R_s$ and driving a load $C_L$:
 
-One thing that should be remebered is the effect of scaling of size of an inverter on its resistance and capacitance value. Suppose the size of an inverter has been scaled by a factor x, then its resistance will get reduced by the same factor while its capacitance will be increased by the same factor.  
+- **Large inverter size:** Drives $C_L$ quickly, but $R_s$ struggles due to increased input capacitance.
+- **Small inverter size:** $R_s$ drives quickly, but delay to $C_L$ increases.
 
-For getting optimum size of inverter, we differentiate the delay with respect to size. And when we put that value of size in the expressions of delay at the input of an inverter and delay in output, we get the same expressions. So we can summarize the optimal result for the above figure as below:  
+There is an optimal point between these extremes.
 
-**An inverter is scaled for optimium delay when the RC product of its input capacitance and the external resistance driving it, equals the RC product of its output resistance and the external load that it drives.**  
+**Effect of Scaling:**
 
-Now we will extend this concept for a chain of inverters as shown below  
+- If inverter size is scaled by $x$:
+  - Resistance decreases by $x$
+  - Capacitance increases by $x$
 
-<img src="images/t52.jpg">
+**Optimal Condition:**
 
-As we have seen earlier that to minimize delay, the RC product at input and output of an inverter should be same. Similar is the case with chain of inverters. Therefor the optimum size of each inverter is the geometric mean of its neighbors - meaning that if each inverter is sized up by the same factor x with respect to the preceding inverter, it will have the same effective RC product and hence the same delay.  
+> An inverter is scaled for optimum delay when the RC product of its input capacitance and the external resistance driving it equals the RC product of its output resistance and the external load that it drives.
 
-The following figure shows the relationship in sizes of a chain of five inverters  
+---
 
-<img src="images/t53.jpg">
+### Chain of Inverters
 
-Now we just have to see what is the value of x. The value of x derived by differentiating delay expression is nth root of C<sub>L</sub>/C<sub>g1</sub> where  
+Extending the concept to a chain of inverters:
 
-n is equal to the number of inverters in the chain  
-C<sub>L</sub> is equal to the load capacitance  
-C<sub>g1</sub> is equal to the input gate capacitance of the first inverter  
+<img src="images/t52.jpg" width="600px">
 
-So expression for x is shown below  
+To minimize delay, the RC product at input and output of each inverter should be the same. The optimum size of each inverter is the geometric mean of its neighbors. If each inverter is sized up by the same factor $x$ with respect to the preceding inverter, it will have the same effective RC product and hence the same delay.
 
-<img src="images/t54.jpg">  
+**Example: Chain of Five Inverters**
 
+<img src="images/t53.jpg" width="600px">
+
+---
+
+### Optimum Sizing Factor
+
+The value of $x$ (scaling factor) is:
+
+$$
+x = \sqrt[n]{\frac{C_L}{C_{g1}}}
+$$
+
+Where:
+
+- $n$ = number of inverters in the chain
+- $C_L$ = load capacitance
+- $C_{g1}$ = input gate capacitance of the first inverter
+
+<img src="images/t54.jpg" width="200px">
+
+---
+
+### Delay in Logic Circuits and Logical Effort
+
+One of the common challenges in chip design is determining the optimal transistor size and number of logic stages to minimize delay. The method of logical effort is used to estimate delay in CMOS circuits, accounting for capacitive load and gate topology.
+
+**Gate delay formula:**
+
+$$
+D = p + h
+$$
+
+Where:
+
+- $p$ = intrinsic delay
+- $h$ = effort delay
+
+**Effort delay:**
+
+$$
+h = g \times f
+$$
+
+Where:
+
+- $g$ = logical effort (ratio of gate input capacitance to inverter capacitance when sized for equal current)
+- $f$ = electrical effort ($f = C_{out}/C_{in}$), a function of load/gate size
+
+**Logical effort of an inverter is 1:**
+
+<img src="images/gateIntro1.jpg" width="500px">
+
+---
+
+### Delay Illustration
+
+In this experiment, you will learn how delay can be reduced by changing the gate size of an inverter.
+
+<img src="images/dintro.jpg" width="600px">
+
+The goal is to reduce the time between input and output transitions by optimizing gate sizing in a chain of inverters.
+
+---
+
+### Summary Table: Delay Parameters
+
+| Parameter | Description                              |
+| --------- | ---------------------------------------- |
+| $R_s$     | Source resistance                        |
+| $C_L$     | Load capacitance                         |
+| $C_{g1}$  | Input gate capacitance of first inverter |
+| $x$       | Sizing factor for each inverter          |
+| $n$       | Number of inverters in the chain         |
+| $g$       | Logical effort                           |
+| $f$       | Electrical effort                        |
+| $p$       | Intrinsic delay                          |
+| $h$       | Effort delay                             |
+| $D$       | Total delay                              |
