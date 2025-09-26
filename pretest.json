@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. What you mean by delay?",
+      "answers": {
+        "a": "Time to correctly access the input",
+        "b": "Time to correctly access the output",
+        "c": "Average rise time and fall time",
+        "d": "Time taken for the output to come after the input has been captured"
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Incorrect. Delay is not related to accessing the input; it refers to the time between input and output.",
+        "b": "Incorrect. Delay is not about accessing the output alone; it involves the time taken for output after input is applied.",
+        "c": "Incorrect. Average rise time and fall time are transition measures, not the definition of delay.",
+        "d": "Correct. Delay is the time taken for the output to appear after the input has been captured."
+      },
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. Can we reduce delay to zero?",
+      "answers": {
+        "a": "Yes",
+        "b": "No",
+        "c": "Yes in most of the cases",
+        "d": "Yes in very few cases"
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "Incorrect. Delay cannot be reduced to zero due to physical and practical limitations.",
+        "b": "Correct. It is not possible to achieve zero delay in real systems.",
+        "c": "Incorrect. Delay can be minimized but not eliminated in most cases.",
+        "d": "Incorrect. Achieving zero delay is not practical, even in rare cases."
+      },
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "3. The optimum size of each inverter is ________ of its neighbours",
+      "answers": {
+        "a": "Geometric mean",
+        "b": "Arithmetic mean",
+        "c": "Geometric or arithmetic mean",
+        "d": "None of the above"
+      },
+      "correctAnswer": "a",
+      "explanations": {
+        "a": "Correct. The geometric mean of neighboring inverter sizes gives optimum sizing for minimum delay.",
+        "b": "Incorrect. Arithmetic mean does not provide optimum sizing for inverter chains.",
+        "c": "Incorrect. Only geometric mean is optimum in this context.",
+        "d": "Incorrect. There is a correct option for optimum sizing."
+      },
+      "difficulty": "advanced"
+    },
+    {
+      "question": "4. What does Cg1 corresponds to in the following formula? <img src='images/t54.jpg'>",
+      "answers": {
+        "a": "Input gate capacitance of the last inverter driving capacitative load",
+        "b": "Sum of input capacitances of all the inverter in series",
+        "c": "Input gate capacitance of first inverter in series",
+        "d": "None of the above"
+      },
+      "correctAnswer": "c",
+      "explanations": {
+        "a": "Incorrect. Cg1 does not refer to the last inverter's input gate capacitance.",
+        "b": "Incorrect. Cg1 is not the sum of all input capacitances.",
+        "c": "Correct. Cg1 is the input gate capacitance of the first inverter in the series.",
+        "d": "Incorrect. There is a correct option for what Cg1 corresponds to."
+      },
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. If the gate size is increased by n then what will be the effect on its resistance?",
+      "answers": {
+        "a": "Increases by n",
+        "b": "Decreases by n",
+        "c": "Decreases by n<sup>2</sup>",
+        "d": "Remains constant"
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "Incorrect. Increasing gate size does not increase resistance.",
+        "b": "Correct. Increasing gate size by n decreases resistance by n.",
+        "c": "Incorrect. Resistance does not decrease by n squared.",
+        "d": "Incorrect. Resistance changes with gate size."
+      },
+      "difficulty": "advanced"
+    },
+    {
+      "question": "6. If the gate size is increased by n then what will be the effect on its capacitance?",
+      "answers": {
+        "a": "Increases by n<sup>2</sup>",
+        "b": "Increases by n",
+        "c": "Decreases by n",
+        "d": "Remains constant"
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "Incorrect. Capacitance does not increase by n squared when gate size increases by n.",
+        "b": "Correct. Capacitance increases linearly with gate size.",
+        "c": "Incorrect. Increasing gate size does not decrease capacitance.",
+        "d": "Incorrect. Capacitance changes with gate size."
+      },
+      "difficulty": "advanced"
+    },
+    {
+      "question": "7. Choose the correct statement from the following.",
+      "answers": {
+        "a": "All the inveters in series are kept to be of same size for minimum delay",
+        "b": "The inverter size does not matter as long as the inverter driving the load has very big size",
+        "c": "The inverter size does not matter as long as the inverter driving the load has very small size",
+        "d": "The size of the inverter driving the load is maximum of all and is some multiple of size of the previous inverters"
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Incorrect. Keeping all inverters the same size does not minimize delay.",
+        "b": "Incorrect. The size of all inverters matters for delay, not just the last one.",
+        "c": "Incorrect. A very small inverter driving the load is not optimal for delay.",
+        "d": "Correct. The inverter driving the load is usually the largest and a multiple of previous sizes for minimum delay."
+      },
+      "difficulty": "advanced"
+    },
+    {
+      "question": "8. For minimum delay, what is the number of inverters in the chain connected in series?",
+      "answers": {
+        "a": "4",
+        "b": "5",
+        "c": "6",
+        "d": "Need to calculate according to the situation given, it is not fixed."
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Incorrect. The number of inverters for minimum delay is not always 4; it depends on the situation.",
+        "b": "Incorrect. The number is not always 5; it must be calculated for each case.",
+        "c": "Incorrect. The number is not always 6; it varies with the scenario.",
+        "d": "Correct. The number of inverters for minimum delay must be calculated according to the specific situation."
+      },
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. Let a be the stage ratio of an inverter chain. What is its optimum value to drive a load capacitor with minimum delay?",
+      "answers": {
+        "a": "4",
+        "b": "1/e",
+        "c": "2",
+        "d": "e"
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Incorrect. 4 is not the optimum stage ratio for minimum delay in general.",
+        "b": "Incorrect. 1/e is not the optimum stage ratio for minimum delay.",
+        "c": "Incorrect. 2 is not the optimum stage ratio for minimum delay.",
+        "d": "Correct. The optimum stage ratio for minimum delay is e in many cases."
+      },
+      "difficulty": "advanced"
+    },
+    {
+      "question": "10. In the above question, if parasitic capacitances are taken into consideration then what is the optimum value of a?",
+      "answers": {
+        "a": "4",
+        "b": "e",
+        "c": "1/e",
+        "d": "2"
+      },
+      "correctAnswer": "a",
+      "explanations": {
+        "a": "Correct. With parasitic capacitances, the optimum stage ratio can be 4 in some cases.",
+        "b": "Incorrect. e is not always optimum when parasitic capacitances are considered.",
+        "c": "Incorrect. 1/e is not the optimum value for this scenario.",
+        "d": "Incorrect. 2 is not the optimum value when parasitic capacitances are considered."
+      },
+      "difficulty": "advanced"
+    }
+  ]
+}
